@@ -13,7 +13,7 @@ if [ -n "$TOOLCHAIN" ]; then
     echo "Patching toolchain config to use keylcoak installed on the cluster"
 
     BASE_URL=$(oc get ingresses.config.openshift.io/cluster -o jsonpath={.spec.domain})
-    RHSSO_URL="https://keycloak-dev-sso.$BASE_URL"
+    RHSSO_URL="https://sso-keycloak.$BASE_URL"
 
     oc patch ToolchainConfig/config -n toolchain-host-operator --type=merge --patch-file=/dev/stdin << EOF
 spec:
