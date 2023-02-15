@@ -18,3 +18,12 @@ patches:
       kind: Deployment
       name: gitops-appstudio-service-controller-manager
     path: controller-limits-patch.json
+  - target:
+      kind: Deployment
+      name: gitops-core-service-controller-manager
+    path: core-limits-patch.json
+  - target:
+      kind: Deployment
+      name: gitops-service-agent-controller-manager
+    path: agent-limits-patch.json
+        
