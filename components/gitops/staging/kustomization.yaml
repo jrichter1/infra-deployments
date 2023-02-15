@@ -12,3 +12,9 @@ images:
 
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+patches:
+  - target:
+      kind: Deployment
+      name: gitops-appstudio-service-controller-manager
+    path: controller-limits-patch.json
