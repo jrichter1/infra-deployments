@@ -53,6 +53,19 @@ if $TOOLCHAIN ; then
   echo "Deploying toolchain"
   "$ROOT/hack/sandbox-development-mode.sh"
 
+  cat << EOF |
+apiVersion: toolchain.dev.openshift.com/v1alpha1
+kind: ProxyPlugin
+metadata:
+  name: tekton-results
+  namespace: toolchain-host-operator
+spec:
+  openShiftRouteTargetEndpoint:
+    name: tekton-results
+    namespace: tekton-results
+EOF
+  oc apply -f -
+
   if $KEYCLOAK; then
     echo "Patching toolchain config to use keylcoak installed on the cluster"
 
